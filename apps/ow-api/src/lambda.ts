@@ -1,12 +1,2 @@
-import { ApolloServer } from "apollo-server-lambda"
-import { Handler } from "aws-lambda"
-import { apolloConfig } from "./"
-
-const createHandler = async () => {
-  const server = new ApolloServer(apolloConfig)
-  return server.createHandler()
-}
-
-export const graphqlHandler: Handler = (event, context, callback) => {
-  createHandler().then((handler) => handler(event, context, callback))
-}
+// TODO: Integrate tRPC with AWS lambda: https://trpc.io/docs/v9/aws-lambda#3-use-the-amazon-api-gateway-adapter
+export { }

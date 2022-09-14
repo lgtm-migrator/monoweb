@@ -1,18 +1,7 @@
-import { ApolloServer, ApolloServerExpressConfig } from "apollo-server-express"
 import express from "express"
 
-const origin = ["https://studio.apollographql.com", "http://localhost:3000"]
-
-export const createServer = async (apolloConfig: ApolloServerExpressConfig) => {
+export const createServer = async () => {
   const app = express()
-  const server = new ApolloServer(apolloConfig)
-  await server.start()
-  server.applyMiddleware({
-    app,
-    cors: {
-      origin,
-      credentials: true,
-    },
-  })
+  // TODO: Start local server
   return app
 }
