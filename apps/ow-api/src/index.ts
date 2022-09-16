@@ -6,15 +6,19 @@ import { ApolloServerExpressConfig } from "apollo-server-express"
 import graphqlSchema from "./graphql/schema.js"
 import { Request, Response } from "express"
 import { PrismaClient } from "@dotkom/db"
+import { initPunishmentRepository } from "./modules/punishment/punishment-repository.js"
+import { initPunishmentService } from "./modules/punishment/punishment-service.js"
 
 const logger = getLogger(import.meta.url)
 const client = new PrismaClient()
 
 // Repositories
 const userRepository = initUserRepository(client)
+const punishmentRepository = initPunishmentRepository(client)
 
 // Services
 const userService = initUserService(userRepository)
+const punishmentService = initPunishmentService(punishmentRepository)
 
 export const apolloConfig: ApolloServerExpressConfig = {
   schema: graphqlSchema,
