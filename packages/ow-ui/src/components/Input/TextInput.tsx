@@ -3,6 +3,7 @@ import { FC, forwardRef } from "react"
 import { css } from "../../config/stitches.config"
 
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
+  description?: string
   variant?: "brand"
   placeholder?: string
   label?: string
@@ -11,7 +12,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
 }
 
 export const TextInput = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, withAsterisk, error, variant, ...props }, ref) => {
+  ({ label, withAsterisk, error, variant, description, ...props }, ref) => {
     return (
       <div className={styles.container()}>
         {label && (
@@ -19,9 +20,10 @@ export const TextInput = forwardRef<HTMLInputElement, InputProps>(
             {label} {withAsterisk && <span className={styles.asterisk()}>*</span>}
           </Label>
         )}
+        {description && <span className={styles.description()}>{description}</span>}
         <input
-          type="text"
           {...props}
+          type={props.type || "text"}
           ref={ref}
           className={styles.input({ variant: variant, error: !!error, disabled: props.disabled })}
         />
@@ -37,13 +39,18 @@ const styles = {
     flexDirection: "column",
   }),
   label: css({
-    margin: "$1 0",
+    fontSize: "$sm",
   }),
   asterisk: css({
     color: "$red0",
   }),
+  description: css({
+    color: "$gray8",
+    fontSize: "$xs",
+  }),
   input: css({
     padding: "$2 $2",
+    marginTop: "$1",
     border: "1px solid $gray10",
     borderRadius: "$1",
     transition: "border-color 0.3s ease-out",
@@ -55,7 +62,7 @@ const styles = {
       variant: {
         brand: {
           borderColor: "$blue3",
-          borderWidth: "2px"
+          borderWidth: "2px",
         },
       },
       error: {

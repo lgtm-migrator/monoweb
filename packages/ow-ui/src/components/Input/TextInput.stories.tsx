@@ -18,7 +18,7 @@ const Template: ComponentStory<typeof TextInput> = (args) => {
 export const Default = Template.bind({})
 
 export const BrandWithAsterisk = Template.bind({})
-BrandWithAsterisk.args = { variant: "brand", withAsterisk: true }
+BrandWithAsterisk.args = { variant: "brand", withAsterisk: true, description: "Must be a real name" }
 
 export const Placeholder = Template.bind({})
 Placeholder.args = { placeholder: "Chad Thunder" }
