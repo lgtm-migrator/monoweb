@@ -5,13 +5,16 @@ import React from "react"
 
 import DropdownItemsContainer from "./DropdownItemContainer"
 import ProfileTrigger from "./ProfileTrigger"
+import { useRouter } from "next/router"
 
 export const Profile = () => {
+  const router = useRouter()
+
   return (
     <DropdownMenu>
       <ProfileTrigger />
       <DropdownItemsContainer sideOffset={5}>
-        <DropdownMenuItem>Profil</DropdownMenuItem>
+        <DropdownMenuItem onSelect={() => router.push("/profile")}>Profil</DropdownMenuItem>
         <DropdownMenuItem>Saldo</DropdownMenuItem>
         <DropdownMenuItem disabled>Dashboard</DropdownMenuItem>
         <DropdownMenuItem disabled>Adminpanel</DropdownMenuItem>
