@@ -6,7 +6,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/config/*": ["./config/*"]
-    }
+    },
+    "skipLibCheck": true
   },
   "include": ["./src/**/*.ts", "./config/*.ts", "src/graphql/.generated/nexus-typegen.ts"],
   "exclude": ["**/node_modules/**", "./dist"]
