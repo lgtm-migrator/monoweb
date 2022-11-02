@@ -1,18 +1,18 @@
-import { ApolloServer, ApolloServerExpressConfig } from "apollo-server-express"
 import express from "express"
 
-const origin = ["https://studio.apollographql.com", "http://localhost:3000"]
+import { createExpressMiddleware } from "@trpc/server/adapters/express"
 
-export const createServer = async (apolloConfig: ApolloServerExpressConfig) => {
+import { createContext } from "./"
+import { appRouter } from "./trpc"
+
+export const createServer = () => {
   const app = express()
-  const server = new ApolloServer(apolloConfig)
-  await server.start()
-  server.applyMiddleware({
-    app,
-    cors: {
-      origin,
-      credentials: true,
-    },
+  // TODO: add express cors extension here
+  const handler = createExpressMiddleware({
+    router: appRouter,
+    createContext,
   })
+
+  app.use("/trpc", handler)
   return app
 }

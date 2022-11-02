@@ -1,9 +1,10 @@
-import React from "react"
-import { styled } from "@stitches/react"
+import { css } from "@dotkomonline/ui"
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
+import { styled } from "@stitches/react"
+import React from "react"
+
 import DropdownItemsContainer from "./DropdownItemContainer"
 import ProfileTrigger from "./ProfileTrigger"
-import { css } from "@theme"
 
 export const Profile = () => {
   return (
@@ -15,7 +16,7 @@ export const Profile = () => {
         <DropdownMenuItem disabled>Dashboard</DropdownMenuItem>
         <DropdownMenuItem disabled>Adminpanel</DropdownMenuItem>
         <DropdownMenuItem>Kontakt oss</DropdownMenuItem>
-        <DropdownMenuItem>Log ut</DropdownMenuItem>
+        <DropdownMenuItem>Logg ut</DropdownMenuItem>
 
         <DropdownMenuArrow />
       </DropdownItemsContainer>

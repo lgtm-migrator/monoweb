@@ -3,7 +3,7 @@ import { CSS } from "@theme"
 import PortableText from "@components/molecules/PortableText"
 import Image from "next/image"
 import { DateTime } from "luxon"
-import { Badge, Button, css, Text } from "@dotkom/ui"
+import { Badge, Button, css, Text } from "@dotkomonline/ui"
 import { IoEarth, IoTimeOutline, IoCopyOutline, IoArrowBackOutline } from "react-icons/io5"
 import { BsLinkedin, BsTwitter } from "react-icons/bs"
 import { ImFacebook2 } from "react-icons/im"
@@ -49,7 +49,7 @@ export const CareerAdView: FC<CareerAdViewProps> = (props: CareerAdViewProps) =>
         }}
       >
         <Box css={{ position: "relative", width: "100%", height: "200px" }}>
-          <Image layout="fill" src={image.asset.url} alt="company_image" />
+          <Image layout="fill" src={image.asset.url} width=200 alt="company_image" />
         </Box>
 
         <Text>{company_info}</Text>
